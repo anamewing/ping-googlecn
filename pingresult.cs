@@ -51,7 +51,7 @@ namespace pinggoogle
 
         public void updateReply(double time)
         {
-            RTtime=(RTtime*replytimes+time)/(RTtime+1);
+            RTtime=(RTtime*replytimes+time)/(replytimes+1);
             addreplytimes();
         }
 

@@ -66,8 +66,12 @@ namespace pinggoogle
                     now = rootstr + c + "." + d;
                     Ping myping = PingDic[now];
                     AutoResetEvent myreset = PResetDic[now];
-                    myping.SendAsync(now, 1000, myreset);
-                    PRdic[now].addpingtimes();
+                    try{
+                        myping.SendAsync(now, 1000, myreset);
+                        PRdic[now].addpingtimes();
+                    }
+                    catch(InvalidOperationException){
+                    }
 
                 }
             }   
