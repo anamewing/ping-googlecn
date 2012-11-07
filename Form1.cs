@@ -19,7 +19,7 @@ namespace pinggoogle
         
         //DictionaryBindingList<string, pingresult> bs1;
         //pingresultBindingSource.DataSource=new BindingSource(PRdic,null);
-        BindingSource bs1=new BindingSource();
+        //BindingSource bs1=new BindingSource();
         
         public Form1()
         {
@@ -27,7 +27,8 @@ namespace pinggoogle
             //dataGridView1.DataSource = new BindingSource(PRdic, null);
             //var bs1 = PRdic.ToBindingList();
             //bs1 = new DictionaryBindingList<string, pingresult>(PRdic);
-            dataGridView1.DataSource = bs1;
+            //dataGridView1.DataSource = bs1;
+            
         
         }
         
@@ -43,7 +44,7 @@ namespace pinggoogle
                     now = rootstr + c + "." + d;
                     pingresult PRtemp = new pingresult(now);
                     PRdic.Add(now, PRtemp);
-                    bs1.Add(PRtemp);
+                    pingresultBindingSource.Add(PRtemp);
                 }
             }
             timer1.Enabled = true;
@@ -56,7 +57,7 @@ namespace pinggoogle
             {
                 PRdic[e.Reply.Address.ToString()].updateReply(myrep.RoundtripTime);
             }
-            //((AutoResetEvent)e.UserState).Set();
+            ((AutoResetEvent)e.UserState).Set();
         }
 
         void pingall()
@@ -70,7 +71,7 @@ namespace pinggoogle
                     Ping myping = new Ping();
                     AutoResetEvent myreset = new AutoResetEvent(false);
                     myping.PingCompleted += new PingCompletedEventHandler(pingcom);
-                    myping.SendAsync(rootstr + c + "." + d, myreset);
+                    myping.SendAsync(rootstr + c + "." + d, 2000,myreset);
                     PRdic[now].addpingtimes();
 
                 }
