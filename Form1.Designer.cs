@@ -32,11 +32,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button2 = new System.Windows.Forms.Button();
             this.RTtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pingtimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.replytimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loserate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
             this.ipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pingresultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -49,7 +49,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "start";
+            this.button1.Text = "restart";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -59,6 +59,9 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -68,41 +71,12 @@
             this.replytimes,
             this.loserate});
             this.dataGridView1.DataSource = this.pingresultBindingSource;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.dataGridView1.Location = new System.Drawing.Point(0, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(550, 273);
+            this.dataGridView1.Size = new System.Drawing.Size(538, 273);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // RTtime
-            // 
-            this.RTtime.DataPropertyName = "RTtime";
-            this.RTtime.HeaderText = "RTtime";
-            this.RTtime.Name = "RTtime";
-            this.RTtime.ReadOnly = true;
-            // 
-            // pingtimes
-            // 
-            this.pingtimes.DataPropertyName = "pingtimes";
-            this.pingtimes.HeaderText = "pingtimes";
-            this.pingtimes.Name = "pingtimes";
-            this.pingtimes.ReadOnly = true;
-            // 
-            // replytimes
-            // 
-            this.replytimes.DataPropertyName = "replytimes";
-            this.replytimes.HeaderText = "replytimes";
-            this.replytimes.Name = "replytimes";
-            this.replytimes.ReadOnly = true;
-            // 
-            // loserate
-            // 
-            this.loserate.DataPropertyName = "loserate";
-            this.loserate.HeaderText = "loserate";
-            this.loserate.Name = "loserate";
-            this.loserate.ReadOnly = true;
             // 
             // button2
             // 
@@ -110,9 +84,37 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 3;
-            this.button2.Text = "Pause";
+            this.button2.Text = "stop";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // RTtime
+            // 
+            this.RTtime.DataPropertyName = "RTtime";
+            this.RTtime.HeaderText = "时间";
+            this.RTtime.Name = "RTtime";
+            this.RTtime.ReadOnly = true;
+            // 
+            // pingtimes
+            // 
+            this.pingtimes.DataPropertyName = "pingtimes";
+            this.pingtimes.HeaderText = "尝试次数";
+            this.pingtimes.Name = "pingtimes";
+            this.pingtimes.ReadOnly = true;
+            // 
+            // replytimes
+            // 
+            this.replytimes.DataPropertyName = "replytimes";
+            this.replytimes.HeaderText = "返回次数";
+            this.replytimes.Name = "replytimes";
+            this.replytimes.ReadOnly = true;
+            // 
+            // loserate
+            // 
+            this.loserate.DataPropertyName = "loserate";
+            this.loserate.HeaderText = "丢包率";
+            this.loserate.Name = "loserate";
+            this.loserate.ReadOnly = true;
             // 
             // ipDataGridViewTextBoxColumn
             // 
@@ -148,12 +150,12 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.BindingSource pingresultBindingSource;
+        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ipDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn RTtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn pingtimes;
         private System.Windows.Forms.DataGridViewTextBoxColumn replytimes;
         private System.Windows.Forms.DataGridViewTextBoxColumn loserate;
-        private System.Windows.Forms.Button button2;
     }
 }
 

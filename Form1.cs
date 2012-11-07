@@ -18,26 +18,17 @@ namespace pinggoogle
         Dictionary<string, pingresult> PRdic = new Dictionary<string, pingresult>();
         Dictionary<string, Ping> PingDic = new Dictionary<string, Ping>();
         Dictionary<string, AutoResetEvent> PResetDic = new Dictionary<string, AutoResetEvent>();
-        //DictionaryBindingList<string, pingresult> bs1;
-        //pingresultBindingSource.DataSource=new BindingSource(PRdic,null);
-        //BindingSource bs1=new BindingSource();
         
         public Form1()
         {
-            InitializeComponent();
-            //dataGridView1.DataSource = new BindingSource(PRdic, null);
-            //var bs1 = PRdic.ToBindingList();
-            //bs1 = new DictionaryBindingList<string, pingresult>(PRdic);
-            //dataGridView1.DataSource = bs1;
-            
-        
+            InitializeComponent();          
         }
         
 
         private void button1_Click(object sender, EventArgs e)
         {
             timer1.Interval = 2000;
-            
+            clearall();
             for (c = 45; c <= 47; c++)
             {
                 for (d = 1; d <= 255; d++)
@@ -75,7 +66,7 @@ namespace pinggoogle
                     now = rootstr + c + "." + d;
                     Ping myping = PingDic[now];
                     AutoResetEvent myreset = PResetDic[now];
-                    myping.SendAsync(rootstr + c + "." + d, 1000, myreset);
+                    myping.SendAsync(now, 1000, myreset);
                     PRdic[now].addpingtimes();
 
                 }
@@ -97,6 +88,14 @@ namespace pinggoogle
             timer1.Enabled = false;
         }
 
+        void clearall()
+        {
+            timer1.Enabled = false;
+            PRdic.Clear();
+            PingDic.Clear();
+            PResetDic.Clear();
+            pingresultBindingSource.Clear();
+        }
 
     }
 
