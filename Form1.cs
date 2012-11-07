@@ -56,7 +56,7 @@ namespace pinggoogle
             {
                 PRdic[e.Reply.Address.ToString()].updateReply(myrep.RoundtripTime);
             }
-            ((AutoResetEvent)e.UserState).Set();
+            //((AutoResetEvent)e.UserState).Set();
         }
 
         void pingall()
@@ -83,6 +83,11 @@ namespace pinggoogle
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer1.Enabled = false;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
             timer1.Enabled = false;
         }

@@ -32,11 +32,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.ipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.RTtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pingtimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.replytimes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.loserate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pingresultBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pingresultBindingSource)).BeginInit();
@@ -44,11 +45,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 12);
+            this.button1.Location = new System.Drawing.Point(35, 18);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(205, 41);
+            this.button1.Size = new System.Drawing.Size(83, 23);
             this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
+            this.button1.Text = "start";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -68,18 +69,12 @@
             this.loserate});
             this.dataGridView1.DataSource = this.pingresultBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 70);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 47);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(759, 250);
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView1.Size = new System.Drawing.Size(550, 273);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // ipDataGridViewTextBoxColumn
-            // 
-            this.ipDataGridViewTextBoxColumn.DataPropertyName = "ip";
-            this.ipDataGridViewTextBoxColumn.HeaderText = "ip";
-            this.ipDataGridViewTextBoxColumn.Name = "ipDataGridViewTextBoxColumn";
-            this.ipDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // RTtime
             // 
@@ -109,6 +104,23 @@
             this.loserate.Name = "loserate";
             this.loserate.ReadOnly = true;
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(164, 18);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 3;
+            this.button2.Text = "Pause";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // ipDataGridViewTextBoxColumn
+            // 
+            this.ipDataGridViewTextBoxColumn.DataPropertyName = "ip";
+            this.ipDataGridViewTextBoxColumn.HeaderText = "ip";
+            this.ipDataGridViewTextBoxColumn.Name = "ipDataGridViewTextBoxColumn";
+            this.ipDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // pingresultBindingSource
             // 
             this.pingresultBindingSource.DataSource = typeof(pinggoogle.pingresult);
@@ -117,7 +129,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 320);
+            this.ClientSize = new System.Drawing.Size(550, 320);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
@@ -140,6 +153,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn pingtimes;
         private System.Windows.Forms.DataGridViewTextBoxColumn replytimes;
         private System.Windows.Forms.DataGridViewTextBoxColumn loserate;
+        private System.Windows.Forms.Button button2;
     }
 }
 
