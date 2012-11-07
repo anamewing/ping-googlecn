@@ -46,7 +46,9 @@ namespace pinggoogle
                     pingresult PRtemp = new pingresult(now);
                     PRdic.Add(now, PRtemp);
                     pingresultBindingSource.Add(PRtemp);
-                    PingDic.Add(now, new Ping());
+                    Ping myping = new Ping();
+                    myping.PingCompleted += new PingCompletedEventHandler(pingcom);
+                    PingDic.Add(now, myping);
                     PResetDic.Add(now, new AutoResetEvent(false));
                 }
             }
@@ -73,7 +75,6 @@ namespace pinggoogle
                     now = rootstr + c + "." + d;
                     Ping myping = PingDic[now];
                     AutoResetEvent myreset = PResetDic[now];
-                    myping.PingCompleted += new PingCompletedEventHandler(pingcom);
                     myping.SendAsync(rootstr + c + "." + d, 1000, myreset);
                     PRdic[now].addpingtimes();
 
