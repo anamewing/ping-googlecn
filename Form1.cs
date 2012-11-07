@@ -16,7 +16,8 @@ namespace pinggoogle
         string rootstr = "203.208.";
         string now = "";
         Dictionary<string, pingresult> PRdic = new Dictionary<string, pingresult>();
-        
+        Dictionary<string, Ping> PingDic = new Dictionary<string, Ping>();
+        Dictionary<string, AutoResetEvent> PResetDic = new Dictionary<string, AutoResetEvent>();
         //DictionaryBindingList<string, pingresult> bs1;
         //pingresultBindingSource.DataSource=new BindingSource(PRdic,null);
         //BindingSource bs1=new BindingSource();
@@ -45,6 +46,8 @@ namespace pinggoogle
                     pingresult PRtemp = new pingresult(now);
                     PRdic.Add(now, PRtemp);
                     pingresultBindingSource.Add(PRtemp);
+                    PingDic.Add(now, new Ping());
+                    PResetDic.Add(now, new AutoResetEvent(false));
                 }
             }
             timer1.Enabled = true;
@@ -55,7 +58,7 @@ namespace pinggoogle
             PingReply myrep = e.Reply;
             if (myrep.Status == IPStatus.Success)
             {
-                PRdic[e.Reply.Address.ToString()].updateReply(myrep.RoundtripTime);
+                PRdic[myrep.Address.ToString()].updateReply(myrep.RoundtripTime);
             }
             ((AutoResetEvent)e.UserState).Set();
         }
@@ -68,10 +71,10 @@ namespace pinggoogle
                 {
                     //ping他，返回只
                     now = rootstr + c + "." + d;
-                    Ping myping = new Ping();
-                    AutoResetEvent myreset = new AutoResetEvent(false);
+                    Ping myping = PingDic[now];
+                    AutoResetEvent myreset = PResetDic[now];
                     myping.PingCompleted += new PingCompletedEventHandler(pingcom);
-                    myping.SendAsync(rootstr + c + "." + d, 2000,myreset);
+                    myping.SendAsync(rootstr + c + "." + d, 1000, myreset);
                     PRdic[now].addpingtimes();
 
                 }
